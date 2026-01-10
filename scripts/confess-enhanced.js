@@ -570,21 +570,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toISOString()
             };
             
-            // In production, make API call:
-            // const response = await fetch('YOUR_BACKEND_URL/api/send-email', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(emailData)
-            // });
+             //In production, make API call:
+             const response = await fetch('https://confession-backend-g25a.onrender.com', {
+                 method: 'POST',
+                 headers: { 'Content-Type': 'application/json' },
+                 body: JSON.stringify(emailData)
+             });
             
             // For now, store in localStorage for demo
-            const emails = JSON.parse(localStorage.getItem('confessionEmails')) || [];
-            emails.push({
+            //const emails = JSON.parse(localStorage.getItem('confessionEmails')) || [];
+            /*emails.push({
                 ...emailData,
                 sentAt: new Date().toISOString(),
                 status: 'sent',
                 simulated: true // Remove in production
-            });
+            });*/
             localStorage.setItem('confessionEmails', JSON.stringify(emails));
             
             console.log('Email sent (simulated):', emailData);
@@ -713,4 +713,5 @@ document.addEventListener('DOMContentLoaded', function() {
             if (currentStep === 2) goToStep1();
         }
     });
+
 });
