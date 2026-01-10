@@ -1,0 +1,31 @@
+# ConfessHub Robots File
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://confesshub.vercel.app/sitemap.xml
+
+# Disallow crawling of private pages
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /backend/
+
+# Crawl delay (requests per second)
+Crawl-delay: 10
+
+# Preferred host (for SEO)
+Host: confesshub.vercel.app
+
+# Contact information for search engines
+# If there are issues, contact via email
+Contact: admin@confesshub.com
+
+# We don't have sensitive files, but just in case
+Disallow: /data/
+Disallow: /config/
+Disallow: /logs/
+Disallow: /tmp/
+Disallow: /private-data/

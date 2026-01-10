@@ -1,0 +1,263 @@
+/* Dark Mode Specific Styles */
+
+/* Override light mode variables */
+body.dark-mode {
+    --primary-color: #8a2be2;
+    --secondary-color: #4169e1;
+    --background-color: #121212;
+    --card-color: #1e1e1e;
+    --text-color: #f0f0f0;
+    --text-secondary: #b0b0b0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced dark mode styles */
+.dark-mode .input-group input,
+.dark-mode .input-group textarea,
+.dark-mode .input-group select {
+    background-color: #2a2a2a;
+    border-color: #444;
+    color: var(--text-color);
+}
+
+.dark-mode .input-group input:focus,
+.dark-mode .input-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+}
+
+.dark-mode .option-card,
+.dark-mode .auth-card,
+.dark-mode .message-item,
+.dark-mode .stat-card,
+.dark-mode .review-message {
+    background-color: var(--card-color);
+}
+
+.dark-mode .filter-btn {
+    border-color: #444;
+    background-color: #2a2a2a;
+}
+
+.dark-mode .filter-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.dark-mode .action-btn {
+    background-color: rgba(138, 43, 226, 0.1);
+    border-color: rgba(138, 43, 226, 0.2);
+}
+
+.dark-mode .action-btn:hover {
+    background-color: rgba(138, 43, 226, 0.2);
+}
+
+.dark-mode .back-btn {
+    background-color: #2a2a2a;
+}
+
+.dark-mode .back-btn:hover {
+    background-color: #333;
+}
+
+.dark-mode .emoji-btn {
+    border-color: #444;
+    background-color: #2a2a2a;
+}
+
+.dark-mode .emoji-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.dark-mode .emoji-btn.active {
+    background-color: rgba(138, 43, 226, 0.2);
+}
+
+.dark-mode .recipient-preview {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: #444;
+}
+
+.dark-mode .message-options {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.dark-mode .review-card {
+    background-color: rgba(138, 43, 226, 0.1);
+    border-color: rgba(138, 43, 226, 0.2);
+}
+
+.dark-mode .char-counter {
+    color: var(--text-secondary);
+}
+
+/* Scrollbar for dark mode */
+.dark-mode ::-webkit-scrollbar {
+    width: 10px;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 5px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Link colors in dark mode */
+.dark-mode a {
+    color: #8a2be2;
+}
+
+.dark-mode a:hover {
+    color: #9d4edd;
+}
+
+/* Table styles for dark mode */
+.dark-mode table {
+    border-color: #444;
+}
+
+.dark-mode th {
+    background-color: #2a2a2a;
+}
+
+.dark-mode td {
+    border-color: #444;
+}
+
+/* Modal backdrop for dark mode */
+.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Placeholder text color */
+.dark-mode ::placeholder {
+    color: #777;
+}
+
+/* Selection color */
+.dark-mode ::selection {
+    background-color: rgba(138, 43, 226, 0.3);
+    color: white;
+}
+
+/* Focus outline for accessibility */
+.dark-mode *:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Disabled state */
+.dark-mode input:disabled,
+.dark-mode textarea:disabled,
+.dark-mode select:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* Success and error states */
+.dark-mode .success-message {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+
+.dark-mode .error-message {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+/* Loading spinner */
+.dark-mode .spinner {
+    border-color: #444;
+    border-top-color: var(--primary-color);
+}
+
+/* Tooltip */
+.dark-mode .tooltip {
+    background-color: #333;
+    color: var(--text-color);
+    border: 1px solid #444;
+}
+
+/* Dropdown menu */
+.dark-mode .dropdown-menu {
+    background-color: #2a2a2a;
+    border-color: #444;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .dropdown-item {
+    color: var(--text-color);
+}
+
+.dark-mode .dropdown-item:hover {
+    background-color: rgba(138, 43, 226, 0.1);
+}
+
+/* Toggle switch */
+.dark-mode .switch {
+    background-color: #444;
+}
+
+.dark-mode .switch::before {
+    background-color: #ddd;
+}
+
+.dark-mode input:checked + .switch {
+    background-color: var(--primary-color);
+}
+
+/* Badges */
+.dark-mode .badge {
+    background-color: rgba(138, 43, 226, 0.2);
+    color: var(--primary-color);
+}
+
+/* Code blocks */
+.dark-mode code {
+    background-color: #2a2a2a;
+    color: #ff79c6;
+}
+
+/* Blockquote */
+.dark-mode blockquote {
+    border-left-color: var(--primary-color);
+    background-color: rgba(138, 43, 226, 0.05);
+    color: var(--text-secondary);
+}
+
+/* Separators */
+.dark-mode hr {
+    border-color: #444;
+}
+
+/* Card hover effects */
+.dark-mode .option-card:hover,
+.dark-mode .sub-option:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Form validation */
+.dark-mode input:valid {
+    border-color: #2ecc71;
+}
+
+.dark-mode input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+/* Animation for dark mode transitions */
+.dark-mode * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write Confession - ConfessHub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/confess.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <span>ConfessHub</span>
+            </div>
+            <div class="nav-options">
+                <button id="theme-toggle" class="theme-btn" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div id="user-actions">
+                    <!-- Will be filled dynamically -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="confession-wrapper">
+            <!-- Left Panel: User Info (only for logged-in users) -->
+            <div class="user-panel" id="user-panel">
+                <div class="user-info">
+                    <img id="confess-profile-pic" src="" alt="Profile" class="profile-pic">
+                    <h3 id="confess-user-name">Anonymous</h3>
+                    <p id="confess-user-id" class="user-id"></p>
+                    <p class="confession-type" id="confession-type">Anonymous Confession</p>
+                </div>
+                
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-paper-plane"></i>
+                        <span id="sent-count">0</span>
+                        <small>Sent</small>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="received-count">0</span>
+                        <small>Received</small>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <button id="view-messages-btn" class="action-link">
+                        <i class="fas fa-inbox"></i> View Messages
+                    </button>
+                    <button id="logout-confess-btn" class="action-link logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Right Panel: Confession Form -->
+            <div class="confession-panel">
+                <div class="confession-header">
+                    <h1><i class="fas fa-heart"></i> Send a Confession</h1>
+                    <p class="subtitle">Share what's in your heart, honestly and respectfully</p>
+                </div>
+                
+                <!-- Confession Progress -->
+                <div class="confession-progress">
+                    <div class="progress-step active">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Recipient</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Message</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Send</div>
+                    </div>
+                </div>
+                
+                <!-- Confession Form -->
+                <form id="confession-form" class="confession-form">
+                    <!-- Step 1: Recipient -->
+                    <div class="form-step active" id="step-1">
+                        <div class="step-header">
+                            <h2><i class="fas fa-user"></i> Who are you confessing to?</h2>
+                            <p>Enter the ID of the person you want to send this confession to</p>
+                        </div>
+                        
+                        <div class="recipient-section">
+                            <div class="input-group">
+                                <label for="recipient-id">
+                                    <i class="fas fa-id-card"></i> Recipient ID
+                                </label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-at"></i>
+                                    <input type="text" id="recipient-id" placeholder="N210001" required 
+                                           pattern="N\d{6}" title="Format: N followed by 6 digits">
+                                </div>
+                                <div class="input-hint">Format: N followed by 6 digits (e.g., N210568)</div>
+                            </div>
+                            
+                            <div class="recipient-preview" id="recipient-preview">
+                                <div class="preview-placeholder">
+                                    <i class="fas fa-user-circle"></i>
+                                    <p>Enter a valid ID to see recipient details</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="next-btn" id="next-1">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Message -->
+                    <div class="form-step" id="step-2">
+                        <div class="step-header">
+                            <h2><i class="fas fa-comment-dots"></i> What do you want to say?</h2>
+                            <p>Write your confession. Be honest, but respectful</p>
+                        </div>
+                        
+                        <div class="message-section">
+                            <div class="emoji-selector">
+                                <label><i class="fas fa-smile"></i> Add an emoji mood:</label>
+                                <div class="emoji-buttons">
+                                    <button type="button" class="emoji-btn" data-emoji="😊">😊</button>
+                                    <button type="button" class="emoji-btn" data-emoji="❤️">❤️</button>
+                                    <button type="button" class="emoji-btn" data-emoji="😍">😍</button>
+                                    <button type="button" class="emoji-btn" data-emoji="😢">😢</button>
+                                    <button type="button" class="emoji-btn" data-emoji="😎">😎</button>
+                                    <button type="button" class="emoji-btn" data-emoji="🤔">🤔</button>
+                                    <button type="button" class="emoji-btn" data-emoji="😇">😇</button>
+                                    <button type="button" class="emoji-btn" data-emoji="🥰">🥰</button>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="confession-message">
+                                    <i class="fas fa-pen"></i> Your Confession
+                                </label>
+                                <textarea id="confession-message" placeholder="Start typing your confession here..." 
+                                          rows="8" required minlength="10" maxlength="1000"></textarea>
+                                <div class="textarea-footer">
+                                    <div class="char-counter">
+                                        <span id="char-count">0</span>/1000 characters
+                                    </div>
+                                    <div class="mood-indicator">
+                                        <span id="selected-emoji">😊</span> <span id="mood-text">Happy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="message-options">
+                                <div class="option-checkbox">
+                                    <input type="checkbox" id="anonymous" checked>
+                                    <label for="anonymous">Send anonymously</label>
+                                </div>
+                                <div class="option-checkbox">
+                                    <input type="checkbox" id="send-email" checked>
+                                    <label for="send-email">Send email notification to recipient</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="back-btn" id="back-2">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="button" class="next-btn" id="next-2">
+                                Next <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Review & Send -->
+                    <div class="form-step" id="step-3">
+                        <div class="step-header">
+                            <h2><i class="fas fa-check-circle"></i> Review & Send</h2>
+                            <p>Check everything before sending your confession</p>
+                        </div>
+                        
+                        <div class="review-section">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="review-emoji" id="review-emoji">😊</div>
+                                    <div>
+                                        <h3>Confession Preview</h3>
+                                        <p class="review-time">Will be sent immediately</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-details">
+                                    <div class="detail-row">
+                                        <span class="detail-label">To:</span>
+                                        <span class="detail-value" id="review-to">N210001</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">From:</span>
+                                        <span class="detail-value" id="review-from">Anonymous</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">Email Notification:</span>
+                                        <span class="detail-value" id="review-email">Yes</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="review-message">
+                                    <div class="message-label">Your Message:</div>
+                                    <div class="message-content" id="review-message">
+                                        Your confession message will appear here...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="send-options">
+                            <div class="option-checkbox">
+                                <input type="checkbox" id="confirm-send" required>
+                                <label for="confirm-send">I confirm that this confession is respectful and appropriate</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="back-btn" id="back-3">
+                                <i class="fas fa-arrow-left"></i> Back
+                            </button>
+                            <button type="submit" class="send-btn" id="send-confession">
+                                <i class="fas fa-paper-plane"></i> Send Confession
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Messages Button (for logged-in users) -->
+    <button id="floating-messages-btn" class="floating-messages-btn" title="Go to Messages">
+        <i class="fas fa-inbox"></i>
+    </button>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-check-circle"></i> Success!</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Confession Sent!</h3>
+                <p>Your confession has been sent successfully.</p>
+                <p id="email-status">The recipient has been notified via email.</p>
+                <div class="modal-buttons">
+                    <button class="ok-btn" id="go-to-messages-btn">
+                        <i class="fas fa-inbox"></i> Go to Messages
+                    </button>
+                    <button class="cancel-btn close-modal">
+                        Send Another
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content error-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-exclamation-circle"></i> Error</h2>
+                <button class="close-error-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="error-icon">
+                    <i class="fas fa-times-circle"></i>
+                </div>
+                <h3 id="error-title">Something went wrong</h3>
+                <p id="error-message">There was an error sending your confession.</p>
+                <button class="ok-btn close-error-modal">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/confess-enhanced.js"></script>
+</body>
+</html>

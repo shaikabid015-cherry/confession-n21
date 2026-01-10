@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confession Website - Home</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <span>ConfessHub</span>
+            </div>
+            <div class="nav-options">
+                <button id="theme-toggle" class="theme-btn" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="hero-section">
+            <h1 class="title">Welcome to ConfessHub</h1>
+            <p class="subtitle">Share your feelings anonymously or with someone special</p>
+            
+            <div class="options-container">
+                <!-- Option 1: Messages Received -->
+                <div class="option-card" id="messages-btn">
+                    <div class="option-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Messages Received</h3>
+                    <p>Check confessions sent to you (Login required)</p>
+                    <div class="option-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <!-- Option 2: Confess -->
+                <div class="option-card" id="confess-btn">
+                    <div class="option-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Confess</h3>
+                    <p>Send a confession to someone</p>
+                    <div class="option-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Confession Sub-Options (Hidden by default) -->
+            <div class="sub-options-container" id="confess-options">
+                <div class="sub-option" id="confess-id">
+                    <div class="sub-option-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Confess via ID</h4>
+                    <p>Send a confession to a specific person</p>
+                </div>
+                
+                <div class="sub-option" id="confess-anon">
+                    <div class="sub-option-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h4>Confess Anonymously</h4>
+                    <p>Send without revealing your identity</p>
+                </div>
+                
+                <button class="back-btn" id="back-btn">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart" style="color: #ff4757;"></i> for N21 Students</p>
+            <p class="footer-note">This is a safe space to express your feelings</p>
+        </footer>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

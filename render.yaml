@@ -1,0 +1,72 @@
+services:
+  # Backend Service (Node.js API)
+  - type: web
+    name: confesshub-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+
+  # Frontend Service (Static Site) - Alternative to Vercel
+  - type: web
+    name: confesshub-frontend
+    env: static
+    buildCommand: echo "Building frontend..."
+    staticPublishPath: ./
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-XSS-Protection
+        value: 1; mode=block
+
+databases:
+  # Optional: Add PostgreSQL database if needed later
+  # - name: confesshub-db
+  #   plan: free
+  #   databaseName: confesshub
+  #   user: confesshub_user
+
+# Environment variables for the whole project
+envVarGroups:
+  - name: production
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_URL
+        value: https://confesshub.onrender.com
+
+# Scheduled jobs (for cleanup, backups, etc.)
+jobs:
+  - type: cron
+    name: cleanup-job
+    schedule: "0 3 * * *"  # Daily at 3 AM
+    command: cd backend && node cleanup.js
+    envVars:
+      - key: NODE_ENV
+        value: production

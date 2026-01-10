@@ -1,0 +1,762 @@
+/* Confession Page Specific Styles */
+
+/* Confession Wrapper */
+.confession-wrapper {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    min-height: calc(100vh - 180px);
+}
+
+@media (max-width: 992px) {
+    .confession-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-panel {
+        display: none !important;
+    }
+}
+
+/* User Panel */
+.user-panel {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.user-info {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .user-info {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-info .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    margin: 0 auto 1rem;
+    object-fit: cover;
+}
+
+.user-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+.user-id {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.confession-type {
+    background-color: rgba(106, 17, 203, 0.1);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.dark-mode .stat-item {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.stat-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-item span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: block;
+    color: var(--text-color);
+}
+
+.stat-item small {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.action-link {
+    background: none;
+    border: 1px solid rgba(106, 17, 203, 0.2);
+    color: var(--primary-color);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.action-link:hover {
+    background-color: rgba(106, 17, 203, 0.1);
+    transform: translateX(5px);
+}
+
+.action-link.logout {
+    border-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.action-link.logout:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Confession Panel */
+.confession-panel {
+    background-color: var(--card-color);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+}
+
+.confession-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.confession-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.confession-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Confession Progress */
+.confession-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    position: relative;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.confession-progress::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #eee;
+    z-index: 1;
+}
+
+.dark-mode .confession-progress::before {
+    background-color: #333;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #eee;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border: 3px solid var(--card-color);
+    transition: var(--transition);
+}
+
+.dark-mode .step-number {
+    background-color: #333;
+    border-color: var(--card-color);
+}
+
+.progress-step.active .step-number {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.progress-step.completed .step-number {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.step-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.progress-step.active .step-label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Form Steps */
+.form-step {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step.active {
+    display: block;
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.step-header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.step-header p {
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Recipient Section */
+.recipient-section {
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding-left: 3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.recipient-preview {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px dashed #ddd;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode .recipient-preview {
+    background-color: rgba(255, 255, 255, 0.02);
+    border-color: #444;
+}
+
+.preview-placeholder {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.preview-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #ddd;
+}
+
+.dark-mode .preview-placeholder i {
+    color: #444;
+}
+
+.recipient-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.recipient-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.recipient-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+.recipient-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Message Section */
+.message-section {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.emoji-selector {
+    margin-bottom: 1.5rem;
+}
+
+.emoji-selector label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.emoji-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.emoji-btn {
+    background: none;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode .emoji-btn {
+    border-color: #444;
+}
+
+.emoji-btn:hover {
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+.emoji-btn.active {
+    border-color: var(--primary-color);
+    background-color: rgba(106, 17, 203, 0.1);
+    transform: scale(1.1);
+}
+
+.textarea-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.mood-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.mood-indicator span:first-child {
+    font-size: 1.2rem;
+}
+
+.message-options {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.dark-mode .message-options {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Review Section */
+.review-section {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.review-card {
+    background-color: rgba(106, 17, 203, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(106, 17, 203, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(106, 17, 203, 0.1);
+}
+
+.review-emoji {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .review-emoji {
+    background-color: #2a2a2a;
+}
+
+.review-header h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+.review-time {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.review-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.detail-value {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.review-message {
+    background-color: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+}
+
+.dark-mode .review-message {
+    background-color: #2a2a2a;
+    border-color: #333;
+}
+
+.message-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.message-content {
+    color: var(--text-color);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.message-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.dark-mode .message-content::-webkit-scrollbar-track {
+    background: #333;
+}
+
+.message-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.dark-mode .message-content::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+.send-options {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+/* Form Navigation */
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .form-navigation {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.back-btn {
+    background-color: #f1f2f6;
+    color: var(--text-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.dark-mode .back-btn {
+    background-color: #333;
+}
+
+.back-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.dark-mode .back-btn:hover {
+    background-color: #444;
+}
+
+.next-btn, .send-btn {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.next-btn:hover, .send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(106, 17, 203, 0.2);
+}
+
+.send-btn {
+    padding: 0.8rem 2rem;
+}
+
+/* Floating Messages Button */
+.floating-messages-btn {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+    transition: var(--transition);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.floating-messages-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4);
+}
+
+/* Modal Updates */
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.error-modal .modal-content {
+    border-top: 5px solid #e74c3c;
+}
+
+.error-icon {
+    font-size: 4rem;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+#email-status {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .confession-panel {
+        padding: 1.5rem;
+    }
+    
+    .confession-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .step-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .review-card {
+        padding: 1.5rem;
+    }
+    
+    .floating-messages-btn {
+        bottom: 1rem;
+        left: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .confession-progress {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .confession-progress::before {
+        display: none;
+    }
+    
+    .progress-step {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .step-number {
+        margin-bottom: 0;
+    }
+    
+    .form-navigation {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .back-btn, .next-btn, .send-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
