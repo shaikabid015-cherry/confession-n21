@@ -18,38 +18,38 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/",
+      "destination": "/index.html"
     },
     {
-      "src": "/login",
-      "dest": "/login.html"
+      "source": "/login",
+      "destination": "/login.html"
     },
     {
-      "src": "/messages",
-      "dest": "/messages.html"
+      "source": "/messages",
+      "destination": "/messages.html"
     },
     {
-      "src": "/confess",
-      "dest": "/confess.html"
+      "source": "/confess",
+      "destination": "/confess.html"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
     },
     {
-      "src": "/styles/(.*)",
-      "dest": "/styles/$1"
+      "source": "/styles/(.*)",
+      "destination": "/styles/$1"
     },
     {
-      "src": "/scripts/(.*)",
-      "dest": "/scripts/$1"
+      "source": "/scripts/(.*)",
+      "destination": "/scripts/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -71,10 +71,6 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
     },
@@ -86,25 +82,9 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
-    },
-    {
-      "source": "/(.*.css|.*.js)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
     }
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "regions": ["sin1"],
-  "public": true,
-  "github": {
-    "enabled": true,
-    "silent": false
-  },
-  "scope": "confesshub"
+  }
 }
