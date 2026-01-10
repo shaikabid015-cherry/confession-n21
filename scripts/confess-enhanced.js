@@ -609,7 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create HTML for email
     function createEmailHTML(message) {
         // Get current URL for the view button
-        const currentUrl = window.location.origin || 'https://your-confesshub-site.com';
+        const currentUrl = window.location.origin || 'https://confesshub-theta.vercel.app/';
         const viewUrl = `${currentUrl}/messages.html`;
         
         // Get your website name
@@ -715,3 +715,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
