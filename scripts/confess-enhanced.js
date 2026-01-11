@@ -553,58 +553,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Send email notification - REAL IMPLEMENTATION
-    async function sendEmailNotification(message) {
-        // For now, we'll simulate email sending
-        // In production, replace with actual API call
+    // Send email notification - REAL IMPLEMENTATION
+async function sendEmailNotification(message) {
+    console.log("Attempting to send email...");
+
+    // 1. Prepare the data to send to your backend
+    const emailData = {
+        to: message.toEmail, // The recipient's email from your hardcoded list
+        toName: message.toName,
+        fromName: message.anonymous ? 'Anonymous' : message.fromName,
+        subject: `You received a confession! ${message.mood.emoji}`,
+        html: createEmailHTML(message), // This uses your existing HTML helper
+        confessionId: message.id,
+        message: message.message,
+        mood: message.mood
+    };
+
+    try {
+        // 2. Make the REAL call to your Render Backend
+        // REPLACE 'https://your-app-name.onrender.com' with your ACTUAL Render URL
+        const backendURL = 'https://confession-backend-g25a.onrender.com'; 
         
-        try {
-            // Simulate API delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // Create email data
-            const emailData = {
-                to: message.toEmail,
-                subject: `You received a confession! ${message.mood.emoji}`,
-                html: createEmailHTML(message),
-                confessionId: message.id,
-                timestamp: new Date().toISOString()
-            };
-            
-             //In production, make API call:
-             const response = await fetch('https://confession-backend-g25a.onrender.com', {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify(emailData)
-             });
-            
-            // For now, store in localStorage for demo
-            //const emails = JSON.parse(localStorage.getItem('confessionEmails')) || [];
-            /*emails.push({
-                ...emailData,
-                sentAt: new Date().toISOString(),
-                status: 'sent',
-                simulated: true // Remove in production
-            });*/
-            localStorage.setItem('confessionEmails', JSON.stringify(emails));
-            
-            console.log('Email sent (simulated):', emailData);
+        const response = await fetch(`${backendURL}/api/send-confession`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(emailData)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            console.log('✅ Email sent successfully via Backend!');
             return true;
-            
-        } catch (error) {
-            console.error('Failed to send email:', error);
-            
-            // Store failed email attempt
-            const failedEmails = JSON.parse(localStorage.getItem('failedEmails')) || [];
-            failedEmails.push({
-                message: message,
-                error: error.message,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('failedEmails', JSON.stringify(failedEmails));
-            
+        } else {
+            console.error('❌ Backend failed to send email:', result.message);
             return false;
         }
+
+    } catch (error) {
+        console.error('❌ Network error sending email:', error);
+        
+        // Save to failed emails just in case
+        const failedEmails = JSON.parse(localStorage.getItem('failedEmails')) || [];
+        failedEmails.push({
+            message: message,
+            error: error.message,
+            timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('failedEmails', JSON.stringify(failedEmails));
+        
+        return false;
     }
+}
     
     // Create HTML for email
     function createEmailHTML(message) {
@@ -715,5 +715,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
 
 
