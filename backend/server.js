@@ -22,19 +22,18 @@ let emailConfigured = false;
 function initEmailTransporter() {
     try {
         // This checks if Render has successfully loaded your dashboard variables
-        if (!(n210568@rguktn.ac.in) || !(qtffxdflbpnuzesq)) {
-            console.error('❌ Email credentials not found. Check Render Environment tab.');
-            return null;
-        }
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+  console.error("❌ EMAIL_USER or EMAIL_PASS missing in Render Environment");
+}
 
-        transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
+    const transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
             port: 465, // Using port 465 is more stable on Render
             secure: true, // SSL required for port 465
             auth: {
-                user: n210568@rguktn.ac.in,
-                pass: qtffxdflbpnuzesq
-            }
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
         });
 
         transporter.verify(function(error, success) {
@@ -1502,6 +1501,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
