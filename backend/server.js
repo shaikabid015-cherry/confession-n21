@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 // Email transporter configuration with better logging
 let transporter = null;
-let emailConfigured = true;
+let emailConfigured = false;
 
 function initEmailTransporter() {
     try {
@@ -1501,6 +1501,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
