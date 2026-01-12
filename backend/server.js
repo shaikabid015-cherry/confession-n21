@@ -79,8 +79,8 @@ app.post('/api/test-email', async (req, res) => {
         }
         
         const mailOptions = {
-            from: `"ConfessHub" <${n210568@rguktn.ac.in}>`,
-            to: to || n210568@rguktn.ac.in, // Send to self if no recipient
+            from: `"ConfessHub" <${process.env.EMAIL_USER}>`,
+            to: to || process.env.EMAIL_USER, // Send to self if no recipient
             subject: subject || 'Test Email from ConfessHub',
             html: `
                 <div style="font-family: Arial, sans-serif; padding: 20px;">
@@ -158,11 +158,11 @@ app.post('/api/send-confession', async (req, res) => {
         
         // Email options
         const mailOptions = {
-            from: `"ConfessHub" <${n210568@rguktn.ac.in}>`,
+            from: `"ConfessHub" <${process.env.EMAIL_USER}>`,
             to: to,
             subject: subject || 'You received a confession! ❤️',
             html: emailHtml,
-            replyTo: n210568@rguktn.ac.in,
+            replyTo: process.env.EMAIL_USER,
             headers: {
                 'X-Confession-ID': confessionId || 'unknown',
                 'X-Sender': 'ConfessHub System'
@@ -910,7 +910,7 @@ app.post('/api/auth/login', (req, res) => {
     { id: 'N210565', password: '(2435c)', name: 'TUMMALA LAKSHMI TEJA SRI', email: 'n210565@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210565.jpg' },
     { id: 'N210566', password: '^e7f9c*', name: 'NADUPURU KIRANMAYI', email: 'n210566@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210566.jpg' },
     { id: 'N210567', password: '^fe6bd^', name: 'DAKI DIVAKAR BABU', email: 'n210567@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210567.jpg' },
-    { id: 'N210568', password: '!d2658!', name: 'SHAIK ABID', email: 'n210568@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210568.jpg' },
+    { id: 'N210568', password: '!d2658!', name: 'SHAIK ABID', email: 'process.env.EMAIL_USER', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210568.jpg' },
     { id: 'N210569', password: '!31c6f$', name: 'KOLLI YASWANTH', email: 'n210569@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210569.jpg' },
     { id: 'N210570', password: '$0ec9f$', name: 'ANDALURI JYOTHIRMAI', email: 'n210570@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210570.jpg' },
     { id: 'N210571', password: '!684ee!', name: 'SOMISETTI VARSHA', email: 'n210571@rguktn.ac.in', profilePic: 'https://intranet.rguktn.ac.in/SMS/usrphotos/user/N210571.jpg' },
@@ -1501,6 +1501,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
