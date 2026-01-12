@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware - IMPORTANT: Allow CORS from your Vercel frontend
 app.use(cors({
-    origin: ['https://confesshub.vercel.app', 'http://localhost:3000', 'http://localhost:5500'],
+    origin: ['https://confesshub2.vercel.app', 'http://localhost:3000', 'http://localhost:5500'],
     credentials: true
 }));
 app.use(express.json());
@@ -1505,4 +1505,5 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
