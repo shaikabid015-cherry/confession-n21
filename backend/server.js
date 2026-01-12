@@ -32,8 +32,8 @@ function initEmailTransporter() {
             port: 465, // Using port 465 is more stable on Render
             secure: true, // SSL required for port 465
             auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
+                user: n210568@rguktn.ac.in,
+                pass: qtffxdflbpnuzesq
             }
         });
 
@@ -1502,6 +1502,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
