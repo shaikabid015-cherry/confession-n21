@@ -22,7 +22,7 @@ let emailConfigured = false;
 function initEmailTransporter() {
     try {
         // This checks if Render has successfully loaded your dashboard variables
-        if (!n210568@rguktn.ac.in || !process.env.EMAIL_PASS) {
+        if (!(n210568@rguktn.ac.in) || !(qtffxdflbpnuzesq)) {
             console.error('❌ Email credentials not found. Check Render Environment tab.');
             return null;
         }
@@ -1502,6 +1502,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
