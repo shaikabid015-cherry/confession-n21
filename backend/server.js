@@ -1461,12 +1461,13 @@ app.post('/api/auth/login', (req, res) => {
 });
 
 // Serve frontend in production
+/*
 if (process.env.NODE_ENV === 'production') {
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, 'index.html'));
     });
 }
-
+*/
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error('❌ Server error:', err.stack);
@@ -1504,6 +1505,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
