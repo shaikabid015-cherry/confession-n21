@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 465;
 
 // Middleware - IMPORTANT: Allow CORS from your Vercel frontend
 app.use(cors({
@@ -22,7 +22,7 @@ let emailConfigured = false;
 function initEmailTransporter() {
     try {
         // This checks if Render has successfully loaded your dashboard variables
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        if (!n210568@rguktn.ac.in || !process.env.EMAIL_PASS) {
             console.error('❌ Email credentials not found. Check Render Environment tab.');
             return null;
         }
@@ -80,8 +80,8 @@ app.post('/api/test-email', async (req, res) => {
         }
         
         const mailOptions = {
-            from: `"ConfessHub" <${process.env.EMAIL_USER}>`,
-            to: to || process.env.EMAIL_USER, // Send to self if no recipient
+            from: `"ConfessHub" <${n210568@rguktn.ac.in}>`,
+            to: to || n210568@rguktn.ac.in, // Send to self if no recipient
             subject: subject || 'Test Email from ConfessHub',
             html: `
                 <div style="font-family: Arial, sans-serif; padding: 20px;">
@@ -159,11 +159,11 @@ app.post('/api/send-confession', async (req, res) => {
         
         // Email options
         const mailOptions = {
-            from: `"ConfessHub" <${process.env.EMAIL_USER}>`,
+            from: `"ConfessHub" <${n210568@rguktn.ac.in}>`,
             to: to,
             subject: subject || 'You received a confession! ❤️',
             html: emailHtml,
-            replyTo: process.env.EMAIL_USER,
+            replyTo: n210568@rguktn.ac.in,
             headers: {
                 'X-Confession-ID': confessionId || 'unknown',
                 'X-Sender': 'ConfessHub System'
@@ -1502,6 +1502,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
