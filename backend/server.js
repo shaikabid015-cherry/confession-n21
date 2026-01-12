@@ -14,8 +14,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static('public'));
 // Email transporter configuration with better logging
 let transporter = null;
 let emailConfigured = false;
@@ -1505,6 +1504,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
