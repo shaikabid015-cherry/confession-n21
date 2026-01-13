@@ -26,7 +26,7 @@ function initEmailTransporter() {
   console.error("❌ EMAIL_USER or EMAIL_PASS missing in Render Environment");
 }
 
-    const transporter = nodemailer.createTransport({
+    transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 465, // Using port 465 is more stable on Render
             secure: true, // SSL required for port 465
@@ -1501,6 +1501,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
