@@ -5,7 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;;
+const PORT = process.env.PORT || 5000;
 
 // Middleware - IMPORTANT: Allow CORS from your Vercel frontend
 app.use(cors({
@@ -1501,6 +1501,7 @@ app.listen(PORT, () => {
     ${!emailConfigured ? 'Please set EMAIL_USER and EMAIL_PASS in .env file' : ''}
     `);
 });
+
 
 
 
